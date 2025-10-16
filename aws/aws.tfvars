@@ -12,7 +12,7 @@ kms_manager = "some_username"
 wireguard_peers = 20
 
 # dns over https provider, one of adguard applied-privacy cloudflare google hurricane-electric libre-dns opendns pi-dns quad9-recommended - see https://github.com/curl/curl/wiki/DNS-over-HTTPS
-doh_provider = "opendns"
+doh_provider = "quad9-recommended"
 
 # Generate wireguard client configurations to route only "dns" traffic through VPN, or:
 # "peers" - dns + other connected peers
@@ -34,6 +34,7 @@ aws_region = "us-east-1"
 # SUGGEST: ARM-based - these are much lower cost, though not all regions support ARM.
 # To check your region, replace us-east-1 with your region and run the below command.
 # AWS_REGION=us-east-1 && ~/.local/bin/aws ec2 describe-instance-type-offerings --query "InstanceTypeOfferings[?Location=='$AWS_REGION'] [InstanceType] | sort_by(@, &[0])" --filter Name="instance-type",Values="t4g.*,a1.*" --region $AWS_REGION --output text
+# AWS_REGION=us-east-1 && aws ec2 describe-instance-type-offerings --query "InstanceTypeOfferings[?Location=='$AWS_REGION'] [InstanceType] | sort_by(@, &[0])" --filter Name="instance-type",Values="t4g.*,a1.*" --region $AWS_REGION --output text
 instance_type = "t4g.micro"
 
 # The Ubuntu ARM AMI name string, these are occasionally updated with a new date. 
@@ -42,7 +43,8 @@ instance_type = "t4g.micro"
 # AWS_REGION=us-east-1 && ~/.local/bin/aws ec2 describe-images --region $AWS_REGION --owners 099720109477 --filters 'Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-*' 'Name=state,Values=available' --query 'sort_by(Images, &CreationDate)[-1].Name'
 # For x86_64 (non-ARM):
 # AWS_REGION=us-east-1 && ~/.local/bin/aws ec2 describe-images --region $AWS_REGION --owners 099720109477 --filters 'Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*' 'Name=state,Values=available' --query 'sort_by(Images, &CreationDate)[-1].Name'
-vendor_ami_name_string    = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-20221018"
+# vendor_ami_name_string    = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-20221018"
+vendor_ami_name_string    = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-arm64-server-20250925"
 vendor_ami_account_number = "099720109477"
 
 ## VERY UNCOMMON ##

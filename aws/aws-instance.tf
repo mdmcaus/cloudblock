@@ -44,7 +44,8 @@ EOF
 
 # Elastic IP for Instance(s)
 resource "aws_eip" "ph-eip-1" {
-  vpc                       = true
+  domain                    = "vpc"
+  #vpc                       = true
   instance                  = aws_instance.ph-instance.id
   associate_with_private_ip = var.pubnet_instance_ip
   depends_on                = [aws_internet_gateway.ph-gw]
